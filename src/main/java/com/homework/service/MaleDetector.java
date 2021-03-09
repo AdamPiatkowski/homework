@@ -11,7 +11,7 @@ public class MaleDetector {
 
     public String isMale(String name) throws IOException {
 
-        BufferedReader brMale = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\homework\\src\\main\\resources\\meskieImiona"));
+        BufferedReader brMale = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\homework\\src\\main\\resources\\maleNames"));
         String maleName = brMale.readLine();
         while (maleName != null) {
             boolean isMaleName = name.trim().equalsIgnoreCase(maleName.trim());

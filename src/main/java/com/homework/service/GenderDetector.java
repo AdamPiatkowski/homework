@@ -21,7 +21,7 @@ public class GenderDetector {
     }
 
     public String detectGenderByFirstName(String name) throws IOException {
-        System.out.println(name);
+
         String nameToCheck = Arrays.asList(name.trim().split(" ")).get(0);
         String isMale = maleDetector.isMale(nameToCheck);
         String isFemale = femaleDetector.isFemale(nameToCheck);
@@ -39,10 +39,9 @@ public class GenderDetector {
         int numberOfManNames = 0;
         int numberOfFemaleNames = 0;
         List<String> names = Arrays.asList(name.split(" "));
-        System.out.println(names);
+
         for (String singleName : names) {
             singleName.trim();
-            System.out.println(singleName);
             String gender = detectGenderByFirstName(singleName);
 
             if (gender == "MALE") {
@@ -50,7 +49,7 @@ public class GenderDetector {
             } else if (gender == "FEMALE") {
                 numberOfFemaleNames++;
             }}
-            System.out.println("man" + numberOfManNames + " female" + numberOfFemaleNames);
+
             if (numberOfManNames > numberOfFemaleNames) {
                 return "MALE";
             } else if (numberOfManNames < numberOfFemaleNames) {

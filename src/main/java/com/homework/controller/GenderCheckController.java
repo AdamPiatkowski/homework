@@ -20,38 +20,13 @@ public class GenderCheckController {
         this.genderDetector = genderDetector;
     }
     @PostMapping("/index")
-    public String checkGenderByName (@RequestParam String checkName, Model model) throws IOException {
-        System.out.println(checkName);
+    public String checkGenderByName (@RequestParam String checkName,@RequestParam String check, Model model) throws IOException {
 
-        String [] nameList = checkName.split(" ");
-        System.out.println(nameList.length);
-        String answer = "";
+        String answer = check.equals("1") ? genderDetector.detectGenderByFirstName(checkName)
+                :  genderDetector.detectGenderByAllNames(checkName);
 
-        if (nameList.length == 1) {
-            answer = genderDetector.detectGenderByFirstName(checkName);
-        } else if (nameList.length>1){
-            answer = genderDetector.detectGenderByAllNames(checkName);
-        }
         model.addAttribute ("checkedGender", answer);
 
         return "checkedGender";
     }
-
-//    @PostMapping ("/index")
-//    public String checkGenderByAllNames (@RequestParam String checkNames, Model model) throws IOException {
-//        System.out.println(checkNames);
-//
-//        String [] nameList = checkNames.split(" ");
-//        System.out.println(nameList.length);
-//        String answer = "";
-
-//        if (nameList.length == 1) {
-//            answer = genderDetector.detectGenderByFirstName(checkNames);
-//        } else if (nameList.length>1){
-//            answer = genderDetector.detectGenderByAllNames(checkNames);
-//        }
-//        model.addAttribute("checkedGender", answer);
-//        return "checkedGender";
-//    }
-
 }
