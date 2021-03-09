@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link href="../static/css/style.css" rel="stylesheet" th:href="@{/../static/css/style.css}">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Check your gender</title>
+</head>
+<body>
+<h1> Hello, enter your name/names and I will tell you what gender you are.</h1>
+<form th:action="@{/index}" method="POST">
+        <label class="">Name :</label><input type="text" th:value="${checkName}" name="checkName" placeholder="Enter your first name" required minlength="3"/>
+        <button type="submit" class="">Check Your gender</button>
+        <fieldset>
+            <legend>What is Your Favorite Pet?</legend>
+            <input type="checkbox" name="check" value="Cats" onclick="onlyOne(this)">Check by first name<br>
+            <input type="checkbox" name="check" value="Dogs" onclick="onlyOne(this)">Check by all names<br>
+            <br>
+            <input type="submit" value="Submit now">
+        </fieldset>
+    </form>
+</form>
+
+<!--<form th:action="@{/index}" method="POST">-->
+<!--    <label class="">Names :</label><input type="text" th:value="${checkNames}" name="checkName" placeholder="Enter your all names" required minlength="3"/>-->
+<!--    <button type="submit" class="">Check Your Names</button>-->
+<!--</form>-->
+
+</body>
+<script src="../static/js/script.js"></script>
+</html>
