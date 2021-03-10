@@ -7,7 +7,7 @@ function sendNameToApplication(event) {
 
     var name = $(this).find('[name="name"]');
 
-    var requestUrl = 'http://localhost:8080/whatGender';
+    var requestUrl = 'http://localhost:8080/';
 
     $.ajax({
         url: requestUrl,
@@ -22,7 +22,7 @@ function sendNamesToApplication(event) {
 
     var name = $(this).find('[name="name"]');
 
-    var requestUrl = 'http://localhost:8080/whatGender';
+    var requestUrl = 'http://localhost:8080/';
 
     $.ajax({
         url: requestUrl,

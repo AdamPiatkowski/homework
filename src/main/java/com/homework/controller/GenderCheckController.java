@@ -7,26 +7,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
 @Controller
 public class GenderCheckController {
 
-    @Autowired
     private final GenderDetector genderDetector;
 
     @Autowired
-    GenderCheckController (GenderDetector genderDetector){
+    GenderCheckController(GenderDetector genderDetector) {
         this.genderDetector = genderDetector;
     }
-    @PostMapping("/index")
-    public String checkGenderByName (@RequestParam String checkName,@RequestParam String check, Model model) throws IOException {
 
-        String answer = check.equals("1") ? genderDetector.detectGenderByFirstName(checkName)
+
+    @PostMapping("/index")
+    public void input(@RequestParam String checkName,@RequestParam String check, Model model) {
+        checkGenderByName(checkName,check,model);
+    }
+
+
+    public void checkGenderByName(String checkName, String check, Model model) {
+        String answer = check.equals("check") ? genderDetector.detectGenderByFirstName(checkName)
                 :  genderDetector.detectGenderByAllNames(checkName);
 
-        model.addAttribute ("checkedGender", answer);
+        String answerOnWebsite = answerOnWebsite(answer);
 
-        return "checkedGender";
+        model.addAttribute("checkedGender", answerOnWebsite);
     }
+
+
+    public String answerOnWebsite( String gender) {
+         return gender.equals("INCONCLUSIVE") ? "INCONCLUSIVE" : "YOU ARE " + gender +"!";
+    }
+
 }

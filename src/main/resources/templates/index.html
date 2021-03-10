@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<link href="../static/css/style.css" rel="stylesheet" th:href="@{/../static/css/style.css}">
+<link href="../static/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <head>
     <meta charset="UTF-8">
-    <title>Check your gender</title>
+    <title>Gender checker</title>
 </head>
 <body>
-<h1> Hello, enter your name/names and I will tell you what gender you are.</h1>
-<form th:action="@{/index}" method="POST">
-        <label class="">Name :</label><input type="text" th:value="${checkName}" name="checkName" placeholder="Enter your first name" required minlength="3"/>
-        <div class="checkbox-group.required"th:value="${check}">
-            <input type="checkbox"  name="check" value="1" onclick="onlyOne(this)" >Check by first name<br>
-            <input type="checkbox" name="check" value="2" onclick="onlyOne(this)" >Check by all names<br>
+<div id="grad1"></div>
+
+<h1> Hello,<br> I will tell you your gender</h1>
+
+<form class="check-name-form" th:action="@{/index}" method="POST">
+    <div><input  style="font-size:25px;" class="inputName"
+                 type="text" th:value="${checkName}" name="checkName"
+                 placeholder="Enter your names" required minlength="3"/></div>
+
+        <div class="checkboxes"th:value="${check}">
+
+    <button class="myButton" name="check" type="submit" value="1">Check Your gender by first name</button>
+    <button class="myButton" name="check" type="submit" value="2">Check Your gender by all name</button>
+
         </div>
-        <button type="submit" class="">Check Your gender</button>
 </form>
 
-<!--<form th:action="@{/index}" method="POST">-->
-<!--    <label class="">Names :</label><input type="text" th:value="${checkNames}" name="checkName" placeholder="Enter your all names" required minlength="3"/>-->
-<!--    <button type="submit" class="">Check Your Names</button>-->
-<!--</form>-->
+<div class="answer"><p th:text="${checkedGender}"></p></div>
 
 </body>
 <script src="../static/js/script.js"></script>

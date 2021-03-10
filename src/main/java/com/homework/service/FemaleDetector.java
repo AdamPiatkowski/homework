@@ -1,7 +1,6 @@
 package com.homework.service;
 
 import org.springframework.stereotype.Service;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,18 +8,21 @@ import java.io.IOException;
 @Service
 public class FemaleDetector {
 
-    public String isFemale(String name) throws IOException {
+    long isFemaleName = 0;
+    public String isFemale (String name) {
 
-        BufferedReader brFemale = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\homework\\src\\main\\resources\\femaleNames"));
-        String femaleName = brFemale.readLine();
-        while (femaleName != null) {
-            boolean isFemaleName = name.trim().equalsIgnoreCase(femaleName.trim());
+        try(BufferedReader brMale = new BufferedReader(
+                new FileReader("C:\\Users\\user\\Desktop\\homework\\src\\main\\resources\\femaleNames"));){
 
-            if (isFemaleName == true) {
-                return "FEMALE";
-            }
-            femaleName = brFemale.readLine();
+            isFemaleName = brMale.lines()
+                    .parallel()
+                    .map(x -> x.trim())
+                    .filter(x-> x.equalsIgnoreCase(name))
+                    .count();
+
+        }catch (IOException e){
+            e.getMessage();
         }
-        return "INCONCLUSIVE";
+        return  (isFemaleName > 0) ? "FEMALE" :"INCONCLUSIVE";
     }
 }
