@@ -14,23 +14,29 @@ public class NameLists {
 
 
     @GetMapping("/nameLists")
-    public List<String> showNameLists (Model model) {
+    public List<List<String>> showNameLists (Model model) {
+
         List<String> femaleList = showFemaleList();
         List<String> maleList = showMaleList();
         List<List<String>>nameLists = Arrays.asList(femaleList,maleList);
+        model.addAttribute("nameLists", nameLists);
 
-        model.addAttribute("src/main/resources/static/maleNames.txt", nameLists);
-
-        return maleList;
+        return nameLists;
     }
 
 
     public List<String> showFemaleList() {
 
-        try(BufferedReader  br = new BufferedReader(
+        try(BufferedReader br = new BufferedReader(
                 new FileReader("src/main/resources/static/femaleNames.txt"))) {
 
-                return names(br);
+            List<String> names = br.lines().parallel()
+                    .filter(x -> x.length() > 0)
+                    .map(x -> x.substring(0, 1).toUpperCase() + x.substring(1))
+                    .distinct()
+                    .collect(Collectors.toList());
+
+                return names;
              }catch (IOException e) {
             System.out.println(e.getMessage());
             }
@@ -38,20 +44,18 @@ public class NameLists {
     }
 
 
-    public List<String> names (BufferedReader br) {
-        return br.lines().parallel()
-                         .collect(Collectors.toList());
-    }
-
-
     public List<String> showMaleList() {
 
 
-        try(BufferedReader  br = new BufferedReader(
-                new FileReader("static/maleNames.txt"))) {
+        try(BufferedReader br = new BufferedReader(
+                new FileReader("src/main/resources/static/maleNames.txt"))) {
             List <String> maleList = br.lines().parallel()
-                                 .collect(Collectors.toList());
-            System.out.println(maleList.toString());
+                    .filter(x -> x.length() > 0)
+                    .map(x -> x.substring(0, 1).toUpperCase() + x.substring(1))
+                    .distinct()
+                    .collect(Collectors.toList());
+
+
             return maleList;
         }catch(IOException e) {
             System.out.println(e.getMessage());
