@@ -2,8 +2,6 @@ package com.homework.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class GenderDetector {
     FemaleDetector femaleDetector;
 
     @Autowired
-    public GenderDetector(MaleDetector maleDetector, FemaleDetector femaleDetector){
+    public GenderDetector(MaleDetector maleDetector, FemaleDetector femaleDetector) {
         this.maleDetector = maleDetector;
         this.femaleDetector = femaleDetector;
     }
@@ -31,7 +29,7 @@ public class GenderDetector {
     }
 
 
-    public String detectGenderByAllNames (String name) {
+    public String detectGenderByAllNames(String name) {
         int numberOfManNames = 0;
         int numberOfFemaleNames = 0;
         List<String> names = Arrays.asList(name.split(" "));

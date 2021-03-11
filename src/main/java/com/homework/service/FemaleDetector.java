@@ -9,10 +9,10 @@ import java.io.IOException;
 public class FemaleDetector {
 
     long isFemaleName = 0;
-    public String isFemale (String name) {
+    public String isFemale(String name) {
 
         try(BufferedReader brMale = new BufferedReader(
-                new FileReader("C:\\Users\\user\\Desktop\\homework\\src\\main\\resources\\femaleNames"));){
+                new FileReader("src/main/resources/static/femaleNames.txt"))) {
 
             isFemaleName = brMale.lines()
                     .parallel()
@@ -20,9 +20,9 @@ public class FemaleDetector {
                     .filter(x-> x.equalsIgnoreCase(name))
                     .count();
 
-        }catch (IOException e){
-            e.getMessage();
+        }catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        return  (isFemaleName > 0) ? "FEMALE" :"INCONCLUSIVE";
+        return  (isFemaleName > 0) ? "FEMALE" : "INCONCLUSIVE";
     }
 }

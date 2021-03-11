@@ -1,6 +1,5 @@
 package com.homework.controller;
 
-
 import com.homework.service.GenderDetector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +24,7 @@ public class GenderCheckController {
 
 
     public void checkGenderByName(String checkName, String check, Model model) {
-        String answer = check.equals("check") ? genderDetector.detectGenderByFirstName(checkName)
+        String answer = check.equals("1") ? genderDetector.detectGenderByFirstName(checkName)
                 :  genderDetector.detectGenderByAllNames(checkName);
 
         String answerOnWebsite = answerOnWebsite(answer);
