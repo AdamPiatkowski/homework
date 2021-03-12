@@ -1,7 +1,3 @@
-
-
-
-
 function sendNameToApplication(event) {
     event.preventDefault();
 

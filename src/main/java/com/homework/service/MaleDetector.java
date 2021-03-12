@@ -1,5 +1,6 @@
 package com.homework.service;
 
+import com.homework.exception.NamesDataNotFoundException;
 import org.springframework.stereotype.Service;
 import java.io.*;
 
@@ -20,8 +21,9 @@ public class MaleDetector {
                     .filter(x-> x.equalsIgnoreCase(name))
                     .count();
 
+
         }catch (IOException e) {
-            System.out.println(e.getMessage());
+            throw new NamesDataNotFoundException();
         }
             return  (isMaleName > 0) ? "MALE" :"INCONCLUSIVE";
     }

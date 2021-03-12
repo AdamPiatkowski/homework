@@ -1,5 +1,6 @@
 package com.homework.service;
 
+import com.homework.exception.NamesDataNotFoundException;
 import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,7 +22,7 @@ public class FemaleDetector {
                     .count();
 
         }catch (IOException e) {
-            System.out.println(e.getMessage());
+            throw new NamesDataNotFoundException();
         }
         return  (isFemaleName > 0) ? "FEMALE" : "INCONCLUSIVE";
     }
