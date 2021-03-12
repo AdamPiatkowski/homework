@@ -1,7 +1,6 @@
 package com.homework.service;
 
 import com.homework.exception.NamesDataNotFoundException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,6 +26,7 @@ public class NameListsGenerator {
               throw new NamesDataNotFoundException();
         }
     }
+
 
     public List<String> femaleList() {
         try (BufferedReader br = new BufferedReader(
