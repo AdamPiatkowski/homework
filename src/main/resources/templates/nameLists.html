@@ -1,18 +1,58 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<link href="../static/css/style.css" rel="stylesheet">
+<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link href="../static/css/style.css" rel="stylesheet" th:href="@{/../static/css/style.css}">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Names</title>
 </head>
 <body>
-<form>
-    <div id="cap"> Nothing yet</div>
-    <p>Hi guys</p>
-    <script>
+<nav>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <ul class="nav-links">
+        <li><a class ="nameLists"><i class="fas fa-address-book"></i>Name Lists</a></li>
+        <li><a class="nameLists"><i class="fas fa-user-check"></i>Check Your gender</a></li>
+    </ul>
+</nav>
+<section class="page-content">
+    <div id = "listAnswer>">
 
-    </script>
-</form>
+        <p>
+            <script>
+                $(document).ready( function () {
+                    $(listAnswer).click(function () {
+                        get("http://localhost/nameList/maleList"
+                            , function (data, status) {
+                                alert("Data : " + data + " status " + status);
+                            });
+                    });
+                });
+
+
+            </script>
+
+        </p>
+
+
+
+    </div>
+    hello
+<section class="menu-bar">
+    <div class="hiddenMenu"></div>
+    <section class="list">
+            <ul>
+                <li><a href="list" ><i class="fas fa-male"></i>Male Names</a></li>
+                <li><a href="list"><i class="fas fa-female"></i>Female Names</a></li>
+<!--                <li><a href="http://localhost:8080/nameLists/maleNames"><i class="fas fa-search"></i></a></li>-->
+
+            </ul>
+    </section>
 
 </body>
 <script src="../static/js/script.js"></script>

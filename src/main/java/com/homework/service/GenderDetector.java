@@ -2,6 +2,8 @@ package com.homework.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,5 +47,12 @@ public class GenderDetector {
         }
         return numberOfManNames > numberOfFemaleNames ? "MALE" :
                 numberOfManNames < numberOfFemaleNames ? "FEMALE" : "INCONCLUSIVE";
+    }
+
+    public void checkGenderByName(String checkName, String check, Model model) {
+        String answer = check.equals("1") ? detectGenderByFirstName(checkName)
+                :  detectGenderByAllNames(checkName);
+
+        model.addAttribute("checkedGender", answer);
     }
 }

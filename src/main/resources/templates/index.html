@@ -8,12 +8,33 @@
     <title>Gender checker</title>
 </head>
 <body>
-<div id="grad1"></div>
+<nav>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <ul class="nav-links">
+        <li><a class ="nameLists"><i class="fas fa-address-book"></i>Name Lists</a></li>
+        <li><a class="nameLists"><i class="fas fa-user-check"></i>Check Your gender</a></li>
+    </ul>
+</nav>
+<section class="page-content">
 
-<h1> Hello,<br> I will tell you your gender</h1>
+    <section class="menu-bar">
+        <h1><div class="hiddenMenu"></i></div> </h1>
+        <section class="list">
+            <ul>
+                <li><a href="http://localhost:8080/nameLists/maleList" ><i class="fas fa-male"></i>Male Names</a></li>
+                <li><a href="http://localhost:8080/nameLists/femaleList"><i class="fas fa-female"></i>Female Names</a></li>
+                <!--                <li><a href="http://localhost:8080/nameLists/maleNames"><i class="fas fa-search"></i>Search</a></li>-->
+            </ul>
+        </section></section>
+</section>
 
 <form class="check-name-form" th:action="@{/index}" method="POST">
-    <div><input  style="font-size:25px;" class="inputName"
+    <h1>Hello,<br> I will tell you your gender</h1>
+    <div><input  style="font-size:25px;"  class ="inputName"
                  type="text" th:value="${checkName}" name="checkName"
                  placeholder="Enter your names" required minlength="3"/></div>
 
@@ -22,11 +43,10 @@
     <button class="myButton" name="check" type="submit" value="1">Check Your gender by first name</button>
     <button class="myButton" name="check" type="submit" value="2">Check Your gender by all name</button>
 
-        </div>
 </form>
 
 <div class="answer"><p th:text="${checkedGender}"></p></div>
-
+</div>
 </body>
 <script src="../static/js/script.js"></script>
 </html>

@@ -1,37 +1,35 @@
-function sendNameToApplication(event) {
-    event.preventDefault();
+const hamburger = document.querySelector(".hamburger");
+const nameListBar = document.querySelector(".nav-links");
+const links = document.querySelectorAll(".nav-links li");
+const menuButton = document.querySelector(".nameLists")
+const menuBar = document.querySelector(".menu-bar");
+const pageContent = document.querySelector(".myButton");
 
-    var name = $(this).find('[name="name"]');
+const listAnswer = document.getElementById("listAnswer");
 
-    var requestUrl = 'http://localhost:8080/';
+let nameList;
 
-    $.ajax({
-        url: requestUrl,
-        method: 'POST',
-        processData: false,
-    })
+const nameRequest = new XMLHttpRequest();
+nameRequest.open('GET','http://localhost:8080/nameLists/maleList');
+nameRequest.onload = function() {
+    let res = nameRequest.responseText
+    res.insertAdjacentText("afterend","aja");
+    rendererHtml(res);
+    alert("nie udalo sie")
+}
+nameRequest.send();
 
+function rendererHtml(data) {
+    listAnswer.insertAdjacentText("afterend", data);
 }
 
-function sendNamesToApplication(event) {
-    event.preventDefault();
+menuButton.addEventListener("click", () => {
+    menuBar.classList.toggle("open");
+    pageContent.classList.toggle("open");
+})
 
-    var name = $(this).find('[name="name"]');
-
-    var requestUrl = 'http://localhost:8080/';
-
-    $.ajax({
-        url: requestUrl,
-        method: 'POST',
-        processData: false,
-    })
-}
-
-function onlyOne(checkbox) {
-    var checkboxes = document.getElementsByName('check')
-    checkboxes.forEach((item) => {
-        if (item !== checkbox) item.checked = false;
-        if (item === checkbox) item.checked = true
-    })
-}
-
+hamburger.addEventListener("click", () => {
+    nameListBar.classList.toggle("open");
+    links.forEach(link => {
+        link.classList.toggle("fade");
+    })});

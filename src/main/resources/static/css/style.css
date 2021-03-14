@@ -1,44 +1,162 @@
-html{
-    height: 100%;
+*{
+    margin: 0;
+    padding: 0;
 }
-
-
-body{
-    height: 80%;
-    width: 90%;
-    background-image: linear-gradient(to bottom right, #ffffff, #494848);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+body {
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: #ffffff;
+    text-align: center;
     align-items: center;
 }
 
+nav {
+    top: 0;
+    height: 60px;
+    background: black;
+    z-index: 2;
+}
 h1 {
-    margin-top: 20vh;
-    margin-bottom: 5vh;
-    font-size: 40px;
+    font-size: 30px;
+    margin: 40px;
+}
+
+.page-content {
+    position: fixed;
+    right: 20%;
+    left: 20%;
+    width: 60%;
+    align-items: center;
     text-align: center;
 }
-
-form {
-    font-size: 30px;
+.nav-links {
+    text-decoration: none;
+    display: flex;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
     align-items: center;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+    color: #9fa8b0;
     font-weight: bold;
+    border: 1px solid #1c252b;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: black;
+}
+.nav-links li a:hover {
+    color: #fff;
+    background: #151617;
+}
+.nav-links li a:active {
+    position: relative;
+    top: 1px;
+    color: #fff;
+    padding: 12px 20px;
+    background: #1d1f23;
+}
+
+.menu-bar {
+    top: -60px;
+    position: fixed;
+    clip-path: circle(20px at 90% -10%);
+    -webkit-clip-path: circle(20px at 90% -10%);;
+    transition: all 1s ease-in;
+    font-family: cursive;
+    flex-direction: column;
+    height: 150vh;
+    width: 100%;
+    background: black;
+    color: white;
+    text-align: center;
+    list-style-type: none;
+    width: 150px;
+    font-size: 30px;
+    padding: 20px;
+    right: 0;
+    z-index: 1;
+
+}
+.menu-bar.open {
+    clip-path: circle(1200px at 90% -10%);
+    -webkit-clip-path: circle(1200px at 90% -10%);
+    z-index: 1;
+}
+
+.list li{
+    text-align: left;
+    cursor: pointer;
+
+}
+.list li{
+    display: block;
+    background: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: large;
+    color: #9fa8b0;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid #131212;
+    border-left: 1px solid #131212;
+    border-top: 1px solid #131212;
+    border-radius: 10px;
+}
+.list li a {
+    text-decoration: none;
+    color: white;
+}
+.list li a:hover{
+    background: #151617;
+}
+.list li a:active {
+    position: relative;
+    top: 1px;
+    color: #fff;
+    background: #1d1f23;
+}
+.nameLists {
+    padding: 12px 20px;
+    display: block;
+    color: #9fa8b0;
+    font-weight: bold;
+    border: 1px solid #1c252b;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: black;
+    text-decoration: none;
+}
+
+.nameLists:active {
+    position: relative;
+    top: 1px;
+    color: #fff;
+    padding: 12px 20px;
+    background: #1d1f23;
+}
+.nameLists:hover{
+    background: #151617;
 }
 
 .inputName {
     border: 2px solid #000000;
     border-radius: 4px;
-    width: 50%;
+    width: 400px;
     padding: 12px 20px;
     box-sizing: border-box;
     text-align: center;
 }
-.box {
-    vertical-align: center;
-    width: 100%;
-    align-items: center;
-}
+
 .checkboxes input {
+    width: 80%;
     align-items: center;
     margin-top: 30px;
     vertical-align: center;
@@ -47,18 +165,29 @@ form {
     text-align: center;
 }
 
+.hiddenMenu {
+    padding: 50px;
+    text-align: left;
+}
+
 .myButton {
     width: 400px;
     margin-top: 20px;
-    background: white;
+    background: black;
     border-radius:10px;
-    border:1px solid #000000;
+    border:3px solid #740000;
     display:inline-block;
     cursor:pointer;
-    color:black;
+    color:white;
     font-size:20px;
     font-weight:bold;
     padding:15px 15px;
+}
+.myButton:active {
+    background: #260012;
+}
+.myButton:hover {
+    border:2px solid #ffffff;
 }
 
 .answer {
@@ -68,3 +197,23 @@ form {
     color: #710101;
     padding: 15px;
 }
+.fas {
+    margin-right: 8px;
+}
+@media screen and (max-width: 768px){
+    .page-content {
+        width: 80%;
+        margin-left: auto;
+    }
+    nav {
+        position: relative;
+    }
+
+    .inputName {
+        width: 300px;
+    }
+    .myButton {
+        width: 300px;
+    }
+}
+
