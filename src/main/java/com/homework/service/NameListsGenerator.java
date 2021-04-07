@@ -12,7 +12,7 @@ public class NameListsGenerator {
 
     public List<String> maleList() {
         try (BufferedReader br = new BufferedReader(
-                        new FileReader("src/main/resources/static/maleNames.txt"))) {
+                        new FileReader("src/main/resources/static/txt/maleNames.txt"))) {
 
             List <String> maleList = br.lines().parallel()
                     .filter(x -> x.length() > 0)
@@ -30,7 +30,7 @@ public class NameListsGenerator {
 
     public List<String> femaleList() {
         try (BufferedReader br = new BufferedReader(
-                new FileReader("src/main/resources/static/femaleNames.txt"))) {
+                new FileReader("src/main/resources/static/txt/femaleNames.txt"))) {
 
             List <String> maleList = br.lines().parallel()
                     .filter(x -> x.length() > 0)

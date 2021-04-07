@@ -13,7 +13,7 @@ public class FemaleDetector {
     public String isFemale(String name) {
 
         try(BufferedReader brMale = new BufferedReader(
-                new FileReader("src/main/resources/static/femaleNames.txt"))) {
+                new FileReader("src/main/resources/static/txt/femaleNames.txt"))) {
 
             isFemaleName = brMale.lines()
                     .parallel()

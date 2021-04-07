@@ -11,7 +11,7 @@ public class MaleDetector {
     public String isMale(String name) {
 
         try(BufferedReader brMale = new BufferedReader(
-                    new FileReader("src/main/resources/static/maleNames.txt"))) {
+                    new FileReader("src/main/resources/static/txt/maleNames.txt"))) {
 
             isMaleName = brMale.lines()
                     .parallel()
